@@ -2,7 +2,7 @@
 
 Offline bilingual (English / বাংলা) dental care tracker for Bangladesh: log daily brushing, keep a 32-tooth FDI chart, record dentist visits and costs, and get a 6-month checkup reminder. Everything runs in the browser with no account, no network calls, and data stored only on the device.
 
-Built by the Muse Project Factory (run #441, 2026-11-25, 18:00 Asia/Dhaka slot).
+Built by the Muse Project Factory (run #448, 2026-11-25, 18:00 Asia/Dhaka slot).
 
 ## Problem
 
