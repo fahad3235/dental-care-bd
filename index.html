@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dental Care BD</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div>
+      <h1 id="appTitle">Dental Care BD</h1>
+      <p class="tagline" id="appTagline"></p>
+    </div>
+    <button id="langBtn" class="btn btn-ghost" type="button">Bangla</button>
+  </div>
+</header>
+
+<nav class="tabs wrap" aria-label="Sections">
+  <button class="tab active" data-tab="dashboard" type="button" id="tabBtn-dashboard">Dashboard</button>
+  <button class="tab" data-tab="brush" type="button" id="tabBtn-brush">Brush Log</button>
+  <button class="tab" data-tab="teeth" type="button" id="tabBtn-teeth">Tooth Chart</button>
+  <button class="tab" data-tab="visits" type="button" id="tabBtn-visits">Visits</button>
+  <button class="tab" data-tab="data" type="button" id="tabBtn-data">Data</button>
+</nav>
+
+<main class="wrap">
+  <!-- DASHBOARD -->
+  <section id="tab-dashboard" class="panel">
+    <h2 id="dashTitle"></h2>
+    <div class="cards">
+      <div class="card"><div class="card-label" id="lblStreakCurrent"></div><div class="card-value" id="streakCurrent">0</div><div class="card-sub" id="lblStreakDays1"></div></div>
+      <div class="card"><div class="card-label" id="lblStreakLongest"></div><div class="card-value" id="streakLongest">0</div><div class="card-sub" id="lblStreakDays2"></div></div>
+      <div class="card"><div class="card-label" id="lblAttention"></div><div class="card-value" id="attentionCount">0</div><div class="card-sub" id="lblAttentionSub"></div></div>
+      <div class="card"><div class="card-label" id="lblTotalSpend"></div><div class="card-value" id="totalSpend">0</div><div class="card-sub" id="lblSpendSub"></div></div>
+      <div class="card wide"><div class="card-label" id="lblNextCheckup"></div><div class="card-value small" id="nextCheckup">-</div><div class="card-sub" id="nextCheckupSub"></div></div>
+    </div>
+
+    <div class="box">
+      <h3 id="lblTodayBrush"></h3>
+      <div class="today-row">
+        <label class="check"><input type="checkbox" id="todayMorning"> <span id="lblMorning"></span></label>
+        <label class="check"><input type="checkbox" id="todayNight"> <span id="lblNight"></span></label>
+        <label class="check"><input type="checkbox" id="todayFloss"> <span id="lblFloss"></span></label>
+        <button id="todaySave" class="btn btn-primary" type="button">Save</button>
+      </div>
+      <p class="hint" id="streakHint"></p>
+      <p class="today-status" id="todayStatus"></p>
+    </div>
+
+    <div class="box">
+      <h3 id="lblWeekChart"></h3>
+      <div id="weekChart" class="chart"></div>
+      <p class="hint" id="weekLegend"></p>
+    </div>
+
+    <div class="box">
+      <h3 id="lblRecentVisits"></h3>
+      <ul id="recentVisits" class="list"></ul>
+    </div>
+  </section>
+
+  <!-- BRUSH LOG -->
+  <section id="tab-brush" class="panel hidden">
+    <h2 id="brushTitle"></h2>
+    <p class="hint" id="brushHint"></p>
+    <form id="brushForm" class="form" novalidate>
+      <label><span id="lblLogDate"></span><input type="date" id="brushDate" required></label>
+      <div class="check-row">
+        <label class="check"><input type="checkbox" id="brushMorning"> <span id="lblBrushMorning"></span></label>
+        <label class="check"><input type="checkbox" id="brushNight"> <span id="lblBrushNight"></span></label>
+        <label class="check"><input type="checkbox" id="brushFloss"> <span id="lblBrushFloss"></span></label>
+      </div>
+      <p class="error" id="brushError" role="alert"></p>
+      <button class="btn btn-primary" type="submit" id="brushSubmit">Add log</button>
+    </form>
+    <h3 id="historyTitle"></h3>
+    <ul id="brushHistory" class="list"></ul>
+    <p class="empty" id="brushEmpty"></p>
+  </section>
+
+  <!-- TOOTH CHART -->
+  <section id="tab-teeth" class="panel hidden">
+    <h2 id="teethTitle"></h2>
+    <p class="hint" id="teethHint"></p>
+    <p class="summary" id="teethSummary"></p>
+    <h3 id="lblUpperJaw"></h3>
+    <div class="jaw" id="jawUpper"></div>
+    <h3 id="lblLowerJaw"></h3>
+    <div class="jaw" id="jawLower"></div>
+    <div class="legend" id="legend"></div>
+    <p class="hint" id="tapHint"></p>
+    <p class="tooth-detail" id="toothDetail"></p>
+  </section>
+
+  <!-- VISITS -->
+  <section id="tab-visits" class="panel hidden">
+    <h2 id="visitsTitle"></h2>
+    <form id="visitForm" class="form" novalidate>
+      <label><span id="lblVisitDate"></span><input type="date" id="visitDate" required></label>
+      <label><span id="lblClinic"></span><input type="text" id="visitClinic" maxlength="60" autocomplete="off"></label>
+      <label><span id="lblTreatment"></span><select id="visitTreatment"></select></label>
+      <label><span id="lblCost"></span><input type="text" id="visitCost" inputmode="decimal" autocomplete="off"></label>
+      <label><span id="lblNotes"></span><input type="text" id="visitNotes" maxlength="300" autocomplete="off"></label>
+      <p class="error" id="visitError" role="alert"></p>
+      <button class="btn btn-primary" type="submit" id="visitSubmit">Add visit</button>
+    </form>
+    <div class="totals"><span id="lblTotalSpend2"></span>: <strong id="totalSpend2"></strong> &middot; <span id="lblLastVisit"></span>: <strong id="lastVisit">-</strong></div>
+    <h3 id="visitsListTitle"></h3>
+    <ul id="visitList" class="list"></ul>
+    <p class="empty" id="visitsEmpty"></p>
+  </section>
+
+  <!-- DATA -->
+  <section id="tab-data" class="panel hidden">
+    <h2 id="dataTitle"></h2>
+    <div class="box">
+      <button id="exportBtn" class="btn btn-primary" type="button">Export JSON</button>
+      <label class="btn btn-secondary file-btn"><span id="importBtnLabel">Import JSON</span><input type="file" id="importFile" accept="application/json,.json" hidden></label>
+      <p class="hint" id="importHint"></p>
+      <p class="msg" id="dataMsg" role="status"></p>
+    </div>
+    <div class="box danger">
+      <h3 id="eraseTitle"></h3>
+      <p class="hint" id="eraseHint"></p>
+      <div class="erase-row">
+        <input type="text" id="eraseInput" autocomplete="off">
+        <button id="eraseBtn" class="btn btn-danger" type="button">Erase all data</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap footer"><p id="footerNote"></p></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="js/logic.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
